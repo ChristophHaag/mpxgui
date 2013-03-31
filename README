@@ -1,0 +1,12 @@
+NOT USEFUL YET!
+
+Minimal gui to set up multi pointer X.
+
+Manual way is not nice:
+* xinput list
+* xinput create-master foobar
+* xinput reattach some_id some_other_id
+
+I say: Why not with drag&drop?
+
+Using the following technologies: python3, pyqt4, ctypes (for using xinput)
