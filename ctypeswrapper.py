@@ -58,18 +58,18 @@ else:
 
 def XIDeviceInfoList():
   numdevices = lib.e_numdevices()
-  l = list()
+  l = dict()
   for i in range(numdevices):
     info = lib.e_list(c_int(i))
-    l.append(
-      {	'deviceid': info.deviceid,
-	'name': info.name.decode("utf8"),
-	'use' : info.use,
-	'attachment' : info.attachment,
-	'enabled' : bool(info.enabled),
-	'type' : info.classes.contents.type,
-	'sourceid' : info.classes.contents.sourceid
-      })
+    l[info.deviceid] = {
+    'deviceid': info.deviceid,
+    'name': info.name.decode("utf8"),
+    'use' : info.use,
+    'attachment' : info.attachment,
+    'enabled' : bool(info.enabled),
+    'type' : info.classes.contents.type,
+    'sourceid' : info.classes.contents.sourceid
+    }
   return l
 
 if __name__ == "__main__":
