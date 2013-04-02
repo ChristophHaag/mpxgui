@@ -3,6 +3,7 @@ libname = "xinput2wrapper.so.1"
 
 import os
 from ctypes import *
+import decimal
 
 # From X11/extensions/XI2.h
 XIMasterPointer                         =1
@@ -51,7 +52,7 @@ xinput_version = lib.e_version().decode("utf8")
 lib.e_numdevices.restype = c_int
 lib.e_list.restype = XIDeviceInfo_struct
 
-if float(xinput_version) >= 1.9999:
+if decimal.Decimal(xinput_version) >= decimal.Decimal(2):
     print ("XInput version good:", str(xinput_version))
 else:
     exit(1)
